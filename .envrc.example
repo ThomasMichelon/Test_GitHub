@@ -1,0 +1,11 @@
+export UNIT="mm"
+export WIND_SPEED="200"
+export MODEL_URL=""
+export SIMULATION_URL=""
+export OUTPUT_URL=""
+export SIMULATION_TYPE="dummy"
+export ISSUER="nabla_core_dev"
+
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
+export AWS_DEFAULT_REGION=us-west-1

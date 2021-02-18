@@ -1,0 +1,11 @@
+steps:	
+- label: ":docker:"	
+  key: build-docker-image	
+  if: build.branch == 'master'	
+  commands:	
+    - docker build -t nabla-core-sport-simulation .	
+    - docker tag nabla-core-sport-simulation:latest 178256257175.dkr.ecr.eu-west-1.amazonaws.com/nabla-core-sport-simulation:latest
+    - docker push 178256257175.dkr.ecr.eu-west-1.amazonaws.com/nabla-core-sport-simulation:latest
+  plugins:	
+    - ecr#v2.1.1:	
+        login: true

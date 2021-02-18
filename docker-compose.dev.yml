@@ -1,0 +1,22 @@
+version: "3.1"
+
+services:
+  nabla-core-sport-simulation:
+    container_name: nabla-core-sport-simulation
+    image: nabla-core-sport-simulation:latest
+    # Keep the container running in development
+    # to be able to access it with bash.
+    # command: tail -f /dev/null
+    command: ./run.sh
+    volumes:
+      - "./tmp:/home/nabla/tmp"
+    environment:
+      - UNIT=${UNIT}
+      - WIND_SPEED=${WIND_SPEED}
+      - MODEL_URL=${MODEL_URL}
+      - SIMULATION_URL=${SIMULATION_URL}
+      - SIMULATION_TYPE=${SIMULATION_TYPE}
+      - OUTPUT_URL=${OUTPUT_URL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}

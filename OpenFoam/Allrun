@@ -1,0 +1,32 @@
+#!/bin/bash
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source the bashrc from openfoam and the user bashrc
+# again, as they are not being picked up from docker.
+source  /opt/openfoam7/etc/bashrc
+export OMPI_MCA_btl_vader_single_copy_mechanism=none
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+runApplication blockMesh
+
+cp -r 0.orig 0
+
+runApplication decomposePar -copyZero
+runParallel snappyHexMesh -overwrite
+
+runApplication reconstructParMesh -constant
+
+runApplication splitMeshRegions -cellZones -largestOnly -overwrite
+
+runApplication checkMesh
+
+runParallel potentialFoam
+runParallel $(getApplication)
+
+runApplication reconstructPar -latestTime
+
+runApplication postProcess -funcs '(vorticity components(U) components(vorticity))' -latestTime
+
+runApplication foamToVTK -latestTime

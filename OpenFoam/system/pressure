@@ -1,0 +1,26 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+
+    pressure1
+    {
+        type        pressure;
+        libs        ("libfieldFunctionObjects.so");
+
+        calcTotal   yes;
+        calcCoeff   yes;
+
+        executeControl  writeTime;
+        writeControl    writeTime;
+
+        pRef                0.0;
+        rhoInf              1.225; // Air at sea level and 15 Celsius 
+        pInf                0;
+        UInf                ({{ wind_speed }} 0 0);
+    }
+
+// ************************************************************************* //
