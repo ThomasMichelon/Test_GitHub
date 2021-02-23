@@ -1,9 +1,9 @@
 version: "3.1"
 
 services:
-  nabla-core-sport-simulation:
-    container_name: nabla-core-sport-simulation
-    image: nabla-core-sport-simulation:latest
+  nabla-core-cfdshaper-simulation:
+    container_name: nabla-core-cfdshaper-simulation
+    image: nabla-core-cfdshaper-simulation:latest
     # Keep the container running in development
     # to be able to access it with bash.
     # command: tail -f /dev/null
