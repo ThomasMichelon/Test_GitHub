@@ -48,7 +48,7 @@ mu = 1.825e-5
 yplus = 1.5
 layer_growth = 1.3
 minLayers = 5
-maxLayers = 25
+maxLayers = 23
 maxTransitionRatio = 1.5
 
 if os.environ.get('SIMULATION_TYPE')=='dummy':
